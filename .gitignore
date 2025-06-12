@@ -134,3 +134,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# vscode settings
+.vscode/
+
+# Local env files
+.env.local
+*.env
