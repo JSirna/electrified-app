@@ -1,4 +1,4 @@
-class AudioControl extends HTMLElement {
+class AudioControl extends HTMLAudioElement {
     constructor() {
         super();
     }
