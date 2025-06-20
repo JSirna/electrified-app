@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home | JSirna</title>
+
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="top-nav">
+            <ul>
+                <a href="./home.html"><img class="logo" src="../../public/images/Biohazard_symbol_512.svg" alt="Home Logo">Home</a>
+                <a href="#about"><li>About</li></a>
+                <a href="./characters.html"><li>Projects</li></a>
+                <a href="#other"><li>Other</li></a>
+                <a href="#random"><li>Random</li></a>
+                <a href="#stuff"><li>Stuff</li></a>
+            </ul>
+        </nav>
+        <span class="theme-toggle">
+            <!-- <img class="toggle" id="toggle-off" onclick="toggleTheme()" src="./images/toggle-off.svg" alt="toggle-off" />
+            <img class="toggle" id="toggle-on" onclick="toggleTheme()" src="./images/toggle-on.svg" alt="toggle-on" /> -->
+            <input type="checkbox" name="toggle" id="toggle" onclick="toggleTheme()" hidden />
+            <label for="toggle" class="toggle">
+                <span class="icon unchecked">
+                    <img src="./images/toggle-off.svg" alt="toggle-off">
+                </span>
+                <span class="icon checked">
+                    <img src="./images/toggle-on.svg" alt="toggle-on">
+                </span>
+            </label>
+        </span>
+        <div class="content-wrap">
+            <div class="side-container">
+                <ul>
+                    <li>List 1</li>
+                    <li>List 2</li>
+                    <li>List 3</li>
+                    <li>List 4</li>
+                    <li>List 5</li>
+                    <li>List 6</li>
+                    <li>List 7</li>
+                    <li>List 8</li>
+                    <li>List 9</li>
+                    <li>List 10</li>
+                </ul>
+            </div>
+            <div class="main-container">
+                <h1>Main</h1>
+                <h2>Main 2</h2>
+                <div class="content">
+                    <p>Hi 👋🏻</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+            <div class="third-container">
+                Second side container
+            </div>
+        </div>
+    </div>
+</body>
+<script src="theme_toggle.js"></script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Characters | JSirna</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="top-nav">
+            <ul>
+                <a href="./home.html"><img class="logo" src="../../public/images/Biohazard_symbol_512.svg" alt="Home Logo">Home</a>
+                <a href="#about"><li>About</li></a>
+                <a href="./characters.html"><li>Projects</li></a>
+                <a href="#other"><li>Other</li></a>
+                <a href="#random"><li>Random</li></a>
+                <a href="#stuff"><li>Stuff</li></a>
+            </ul>
+        </nav>
+        <span class="theme-toggle">
+            <input type="checkbox" name="toggle" id="toggle" onclick="toggleTheme()" hidden />
+            <label for="toggle" class="toggle">
+                <span class="icon unchecked">
+                    <img src="./images/toggle-off.svg" alt="toggle-off">
+                </span>
+                <span class="icon checked">
+                    <img src="./images/toggle-on.svg" alt="toggle-on">
+                </span>
+            </label>
+        </span>
+        <div class="content-wrap">
+            <div class="side-container">
+                <ul>
+                    <li>List 1</li>
+                    <li>List 2</li>
+                    <li>List 3</li>
+                    <li>List 4</li>
+                    <li>List 5</li>
+                    <li>List 6</li>
+                    <li>List 7</li>
+                    <li>List 8</li>
+                    <li>List 9</li>
+                    <li>List 10</li>
+                </ul>
+            </div>
+            <div class="main-container">
+                <h1>Get Characters</h1>
+                <div class="content">
+                    <button type="button" id="get-data">Get Character Data</button>
+                    <span id="results" class="results"></span>
+                </div>
+            </div>
+            <div class="third-container">
+                Second side container
+            </div>
+        </div>
+    </div>
+</body>
+<script src="theme_toggle.js"></script>
+<script src="./CharacterChart.js"></script>
+<script src="./character_design_api.js"></script>
+</html>

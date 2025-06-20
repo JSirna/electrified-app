@@ -1,0 +1,119 @@
+@import './base.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--color-accent)
+}
+
+.wrapper {
+    display: grid;
+    margin: 20px;
+}
+
+.top-nav ul a,li {
+    display: inline-grid;
+    grid-area: nav;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.theme-toggle {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+
+    .icon .checked {
+        display: block;
+    }
+}
+
+#toggle:checked + .toggle .checked {
+    display: block;
+}
+
+#toggle:checked + .toggle .unchecked {
+    display: none;
+}
+
+.content-wrap {
+    display: inline-grid;
+    grid-template-areas: 
+        "side main third";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.main-container {
+    display: grid;
+    grid-area: main;
+    margin: 0 30px;
+    padding: 0 40px;
+}
+
+.main-container .content {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: minmax(100px, auto);
+
+    padding: 20px;
+}
+
+.side-container {
+    display: grid;
+    grid-area:side;
+    grid-template-columns: 1fr;
+    
+}
+
+.third-container {
+    display: grid;
+    grid-area: third;
+    grid-template-columns: 1fr;
+}
+
+.results {
+    padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .content-wrap {
+        grid-template-areas:
+            "side"
+            "main"
+            "third";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .main-container {
+        margin: 0 10px;
+        padding: 0 20px;
+    }
+    .main-container .content {
+        padding: 10px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .logo {
+        width: 40px;
+        height: auto;
+        filter: invert(9%) sepia(11%) saturate(7428%) hue-rotate(153deg) brightness(100%) contrast(103%);
+        transform: scaleY(-1);
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .logo {
+        width: 40px;
+        height: auto;
+        filter: invert(82%) sepia(3%) saturate(3764%) hue-rotate(186deg) brightness(111%) contrast(134%);
+    }
+
+    .toggle {
+        width: 40px;
+        height: auto;
+        filter: invert(82%) sepia(3%) saturate(3764%) hue-rotate(186deg) brightness(111%) contrast(134%);
+    }
+}
