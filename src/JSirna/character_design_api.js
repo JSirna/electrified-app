@@ -1,7 +1,7 @@
-const baseURL = "hp://localhost:5067/api";
+const baseURL = "http://localhost:5067/api";
 // const URL = "http://localhost:5067/api/get-families";
 const button = document.getElementById("get-data");
-// const output = document.getElementById("results");
+const output = document.getElementById("results");
 const characterChart = new CharacterChart();
 
 
@@ -107,5 +107,6 @@ const parseData = (listofObjects) => {
         listOfCharacters.push(characterChart);
     }
     console.log(listOfCharacters);
+    //output.innerText(listOfCharacters);
     return listOfCharacters;
 };
