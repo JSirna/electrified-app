@@ -1,8 +1,4 @@
 const baseURL = "http://localhost:5067/api";
-// const URL = "http://localhost:5067/api/get-families";
-const button = document.getElementById("get-data");
-const output = document.getElementById("results");
-const characterChart = new CharacterChart();
 
 
 const isValidUrl = (string) => {
@@ -17,7 +13,7 @@ const isValidUrl = (string) => {
 
 const fetchCharacters = async () => {
     let data = {};
-    const response = await fetch(`${baseURL}/get-characters`, {
+    const response = await fetch(`${baseURL}/character`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -36,14 +32,17 @@ const fetchCharacters = async () => {
                 console.error("Error fetching resource");
         }
     }
-    else
+    else {
         data = await response.json();
+        console.log(data);
+        document.getElementById('results').textContent = JSON.stringify(data);
+    }
     return data;
 }
 
 const fetchCharactersFamilies = async () => {
     let data = {};
-    const response = await fetch(`${baseURL}/get-families`, {
+    const response = await fetch(`${baseURL}/family`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -66,47 +65,48 @@ const fetchCharactersFamilies = async () => {
     return data;
 }
 
-button.addEventListener('click', async () => {
-    // Try fetching the Character info on click
-    if (isValidUrl(baseURL)) {
-        console.log(isValidUrl(baseURL));
-        try {
-            const chars = await fetchCharacters();
-            console.log("Characters:", chars);
-            parseData(chars);
-            console.log("Character Chart:", characterChart);
-        } catch {
-            console.error("Failed to fetch character info.");
-        }
+function saveCharacter() {
+    let data = {};
+    /* DATA */
+    let fullname = document.getElementById('fullname').value;
+    let reasonName = document.getElementById('reasonName').value;
+    let nickname = document.getElementById('nickname').value;
+    let reasonNickname = document.getElementById('reasonNickname').value;
+    let bdate = document.getElementById('bdate').value;
 
-        // Try fetching the Character family info on click
-        try {
-            const fams = await fetchCharactersFamilies();
-            console.log("Families:", fams);
-        } catch {
-            console.error("Failed to fetch character family info.");
-        }
-    }
-    else
-        console.error(baseURL + " is not a valid URL.");
-    
-});
+    /*****/
+    data = {
+        fullname: fullname,
+        reasonName: reasonName,
+        nickname: nickname,
+        reasonNickname: reasonNickname,
+        birthdate: bdate
+    };
+    return data;
+}
 
-const parseData = (listofObjects) => {
-    let listOfCharacters = [];
-    console.log(listofObjects)
-    for (let i = 0; i < listofObjects.length; i++) {
-        characterChart.characterId = listofObjects[i].characterId;
-        characterChart.fullName = listofObjects[i].fullName;
-        characterChart.reasonForName = listofObjects[i].reasonForName;
-        characterChart.nickname = listofObjects[i].nickname;
-        characterChart.reasonForNickname = listofObjects[i].reasonForNickname;
-        characterChart.birthdate = listofObjects[i].birthdate;
-        characterChart.age = listofObjects[i].age;
-        characterChart.dateCreated = listofObjects[i].dateCreated ? new Date(listofObjects[i].dateCreated).toDateString() : null;
-        listOfCharacters.push(characterChart);
+async function postCharacterChart() {
+    const URL = 'https://localhost:7100/api/character';
+    const data = saveCharacter();
+    try {
+        const response = await fetch(URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Indicate the type of data being sent
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            const responseData = await response.json(); // Parse the JSON response
+            console.log('Success:', responseData);
+            return responseData;
+        }
+    } catch (error) {
+        console.log(error.message);
     }
-    console.log(listOfCharacters);
-    //output.innerText(listOfCharacters);
-    return listOfCharacters;
+}
+
+// TODO: Calculate Age
+const calculateAge = () => {
+    //calculate here
 };
